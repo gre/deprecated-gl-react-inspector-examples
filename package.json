@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "gl-react-example-video",
+  "name": "gl-react-inspector-examples",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "gl-react": "^1.2.1",
-    "gl-react-inspector": "0.0.0",
+    "gl-react-inspector": "gre/gl-react-inspector",
     "glsl-fast-gaussian-blur": "^1.0.2",
     "glslify": "^2.3.1",
     "react": "^0.14.0",

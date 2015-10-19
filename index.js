@@ -26,7 +26,7 @@ class Demo extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      debug: null,
+      glCanvas: null,
       Example: Example1
     };
   }
@@ -34,23 +34,19 @@ class Demo extends React.Component {
     window.addEventListener("resize", () => this.forceUpdate());
   }
   render () {
-    const { debug, Example } = this.state;
+    const { glCanvas, Example } = this.state;
     const width = 320;
     const height = 240;
     return (
       <div>
         <Static value={Example}>
-          <Example width={width} height={height} ref={ref => ref && ref.getGLCanvas().setDebugProbe({
-            onDraw: debug => this.setState({ debug })
-          }) }
+          <Example width={width} height={height}
+            ref={ref => { if (ref) this.setState({ glCanvas: ref.getGLCanvas() }); }}
           />
         </Static>
-        <div>
-          { debug ? <GlReactInspector.Graph
-            {...debug}
-            width={window.innerWidth}
-            height={window.innerHeight-height-50}
-            onChange={()=>{}}
+        <div style={{ height: window.innerHeight-height-50 }}>
+          { glCanvas ? <GlReactInspector.Inspector
+            glCanvas={glCanvas}
           /> : null }
         </div>
         <nav style={{ textAlign: "center" }}>
